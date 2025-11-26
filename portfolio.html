@@ -1,0 +1,1446 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mohammad Sadman Safayet Bhuiyan - Portfolio</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        /* CSS Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Dark Theme Color Palette */
+            --color-black: #0f0f0f;
+            --color-ash-grey: #9ca3af;
+            --color-light-grey: #1f2937;
+            --color-white: #f9fafb;
+            --color-accent: #4b5563;
+            
+            /* Typography */
+            --font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --font-secondary: 'Georgia', serif;
+            
+            /* Shadows and Effects */
+            --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --shadow-strong: 0 15px 40px rgba(0, 0, 0, 0.15);
+            --border-radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            height: 100%;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            line-height: 1.6;
+            color: var(--color-white);
+            background-color: var(--color-black);
+            overflow-x: hidden;
+            height: 100%;
+        }
+
+        /* Navigation Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-soft);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            color: var(--color-ash-grey);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--color-white);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-ash-grey);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--color-ash-grey);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--color-white);
+        }
+
+        /* Section Base Styles */
+        .section {
+            padding: 6rem 2rem 4rem;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--color-black) 0%, var(--color-light-grey) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(107, 114, 128, 0.03) 0%, transparent 70%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(120deg); }
+            66% { transform: translate(-20px, 20px) rotate(240deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s ease forwards 0.5s;
+        }
+
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-ash-grey), var(--color-accent));
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--color-white);
+            box-shadow: var(--shadow-medium);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-photo::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: var(--transition);
+        }
+
+        .profile-photo:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .profile-photo:hover::before {
+            animation: shine 0.8s ease-in-out;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--color-white);
+            font-family: var(--font-secondary);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--color-ash-grey);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--color-white);
+            color: var(--color-black);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: var(--transition);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-medium);
+            background: var(--color-ash-grey);
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition);
+        }
+
+        .section-header.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-white);
+            margin-bottom: 1rem;
+            font-family: var(--font-secondary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--color-ash-grey);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--color-ash-grey);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--color-light-grey);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 100%;
+            max-width: 400px;
+            height: 400px;
+            border-radius: var(--border-radius);
+            background: linear-gradient(135deg, var(--color-ash-grey), var(--color-accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            color: var(--color-white);
+            box-shadow: var(--shadow-medium);
+            transition: var(--transition);
+            margin: 0 auto;
+        }
+
+        .about-image:hover {
+            transform: scale(1.05);
+        }
+
+        .about-text {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: var(--transition);
+        }
+
+        .about-text.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .about-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--color-accent);
+            margin-bottom: 2rem;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-card {
+            
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--color-accent);
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(107, 114, 128, 0.05), transparent);
+            transition: var(--transition);
+        }
+
+        .skill-card:hover::before {
+            left: 100%;
+        }
+
+        .skill-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--color-ash-grey);
+        }
+
+        .skill-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--color-white);
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-description {
+            color: var(--color-ash-grey);
+            font-size: 0.9rem;
+        }
+
+        /* Projects Section */
+        .projects {
+            background: var(--color-light-grey);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: var(--color-light-grey);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            opacity: 0;
+            transform: scale(0.9);
+            border: 1px solid var(--color-accent);
+        }
+
+        .project-card.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .project-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--color-ash-grey), var(--color-accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--color-white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--color-white);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-description {
+            color: var(--color-ash-grey);
+            margin-bottom: 1rem;
+        }
+
+        .project-link {
+            display: inline-block;
+            color: var(--color-ash-grey);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .project-link:hover {
+            color: var(--color-black);
+        }
+
+        /* Education Section */
+        .education-timeline {
+            max-width: 800px;
+            margin: 3rem auto 0;
+            position: relative;
+        }
+
+        .education-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--color-ash-grey);
+            transform: translateX(-50%);
+        }
+
+        .education-item {
+            background: var(--color-white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-soft);
+            margin-bottom: 2rem;
+            position: relative;
+            width: calc(50% - 2rem);
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: var(--transition);
+        }
+
+        .education-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .education-item:nth-child(even) {
+            margin-left: auto;
+            transform: translateX(50px);
+        }
+
+        .education-item:nth-child(even).visible {
+            transform: translateX(0);
+        }
+
+        .education-item::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            background: var(--color-ash-grey);
+            border-radius: 50%;
+            transform: translateY(-50%);
+        }
+
+        .education-item:nth-child(odd)::before {
+            right: -2.5rem;
+        }
+
+        .education-item:nth-child(even)::before {
+            left: -2.5rem;
+        }
+
+        .education-degree {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--color-black);
+            margin-bottom: 0.5rem;
+        }
+
+        .education-school {
+            color: var(--color-ash-grey);
+            margin-bottom: 0.5rem;
+        }
+
+        .education-department {
+            color: var(--color-accent);
+            font-style: italic;
+        }
+
+        /* Achievements Section */
+        .achievements {
+            background: var(--color-light-grey);
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .achievement-card {
+            background: var(--color-white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-soft);
+            text-align: center;
+            transition: var(--transition);
+            opacity: 0;
+            transform: rotateY(20deg);
+            perspective: 1000px;
+        }
+
+        .achievement-card.visible {
+            opacity: 1;
+            transform: rotateY(0deg);
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .achievement-icon {
+            font-size: 3rem;
+            color: var(--color-ash-grey);
+            margin-bottom: 1rem;
+        }
+
+        .achievement-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--color-black);
+            margin-bottom: 0.5rem;
+        }
+
+        .achievement-description {
+            color: var(--color-ash-grey);
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-form {
+            background: var(--color-white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-soft);
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: var(--transition);
+        }
+
+        .contact-form.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--color-black);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid var(--color-light-grey);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+            background: var(--color-white);
+            color: black;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-ash-grey);
+            box-shadow: 0 0 0 3px rgba(107, 114, 128, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-button {
+            background: var(--color-black);
+            color: var(--color-white);
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        .submit-button:hover {
+            background: var(--color-accent);
+            transform: translateY(-2px);
+        }
+
+        .contact-info {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: var(--transition);
+        }
+
+        .contact-info.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            color: var(--color-black);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            color: var(--color-ash-grey);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .contact-details {
+            background: var(--color-white);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: var(--color-accent);
+        }
+
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+.cv-animated-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #0A66C2;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover animation */
+.cv-animated-btn:hover {
+  background-color: #004182;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Ripple / Shine effect */
+.cv-animated-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: skewX(-20deg);
+  transition: 0.4s;
+}
+
+.cv-animated-btn:hover::after {
+  left: 200%;
+}
+
+        .contact-item i {
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            color: var(--color-ash-grey);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--color-black);
+            color: var(--color-white);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .footer p {
+            color: var(--color-ash-grey);
+        }
+
+        /* Success Message */
+        .success-message {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: #10b981;
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-medium);
+            z-index: 1001;
+            transform: translateX(100%);
+            transition: var(--transition);
+            max-width: 350px;
+        }
+
+        .success-message.show {
+            transform: translateX(0);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100% - 70px);
+                background: var(--color-white);
+                flex-direction: column;
+                justify-content: start;
+                padding-top: 2rem;
+                transition: var(--transition);
+                box-shadow: var(--shadow-soft);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .education-timeline::before {
+                left: 20px;
+            }
+
+            .education-item {
+                width: calc(100% - 3rem);
+                margin-left: 3rem;
+            }
+
+            .education-item::before {
+                left: -2.5rem !important;
+            }
+
+            .section {
+                padding: 4rem 1rem 2rem;
+            }
+
+            .skills-grid,
+            .projects-grid,
+            .achievements-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .profile-photo {
+                width: 150px;
+                height: 150px;
+                font-size: 3rem;
+            }
+
+            .about-image {
+                height: 300px;
+                font-size: 4rem;
+            }
+        }
+
+    img {
+        max-width: 300px;
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+.hero {
+  background-image: url(cover1.jpeg); /* Replace with your image URL */
+  background-size: cover;     /* Makes image cover the entire div */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat;
+  height: 400px;              /* Adjust the height as needed */
+  display: flex;              /* For centering text */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;               /* Text color on top of image */
+  text-align: center;
+}
+
+
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body><!-- Navigation -->
+  <nav class="navbar">
+   <div class="nav-container"><a href="#home" class="logo">Mohammad Sadman</a>
+    <ul class="nav-menu">
+     <li><a href="#home" class="nav-link">Home</a></li>
+     <li><a href="#about" class="nav-link">About</a></li>
+     <li><a href="#skills" class="nav-link">Skills</a></li>
+     <li><a href="#projects" class="nav-link">Projects</a></li>
+     <li><a href="#education" class="nav-link">Education</a></li>
+     <li><a href="#achievements" class="nav-link">Achievements</a></li>
+     <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul><button class="mobile-toggle" id="mobileToggle">☰</button>
+   </div>
+  </nav><!-- Hero Section -->
+  <section id="home" class="section hero">
+   <div class="container">
+    <div class="hero-content">
+     <div class="profile-photo">
+      <img src="mypic.jpeg" alt="profile-photo">
+     </div>
+     <div class="hero">
+        <h1 class="hero-title">Mohammad Sadman Safayet Bhuiyan</h1>
+     <p class="hero-subtitle">Student and Aspiring Apparel Engineer</p><a href="#contact" class="cta-button">Get In Touch</a>
+        </div>
+        
+    </div>
+   </div>
+  </section><!-- About Section -->
+  <section id="about" class="section about">
+   <div class="container">
+    <div class="section-header fade-in">
+     <h2 class="section-title">About Me</h2>
+     <p class="section-subtitle">Passionate about innovation and problem-solving in textile engineering</p>
+    </div>
+    <div class="about-content">
+     <div class="about-image">
+      <img src="picpro.jpeg">
+     </div>
+     <div class="about-text fade-in">
+      <p style="color: azure;" class="about-description">I am pursuing my BSc in Textile Engineering. I am interested in AI and research, currently working on a 5S application research project in sewing. Passionate about problem-solving and innovation.</p>
+      <p style="color: azure;" class="about-description">My journey in textile engineering has been driven by curiosity and a desire to make meaningful contributions to the industry. I believe in continuous learning and applying cutting-edge research to real-world challenges.</p>
+     <a href="#" download class="cv-animated-btn">
+  📄 Download CV
+</a>
+
+      </div>
+     
+    </div>
+   </div>
+  </section><!-- Skills Section -->
+  <section id="skills" class="section">
+   <div class="container">
+    <div class="section-header fade-in">
+     <h2 class="section-title">Skills &amp; Expertise</h2>
+     <p class="section-subtitle">Core competencies that drive my professional growth</p>
+    </div>
+    <div class="skills-grid">
+     <div class="skill-card fade-in">
+      <div class="skill-icon">
+      
+      </div>
+      <h3 class="skill-title">Apparel Engineering</h3>
+      <p class="skill-description">Comprehensive understanding of garment construction, production processes, and quality standards</p>
+     </div>
+     <div class="skill-card fade-in">
+      <div class="skill-icon">
+      
+      </div>
+      <h3 class="skill-title">Quality Management</h3>
+      <p class="skill-description">Expertise in quality control systems, 5S methodology, and process optimization</p>
+     </div>
+     <div class="skill-card fade-in">
+      <div class="skill-icon">
+       
+      </div>
+      <h3 class="skill-title">Audio Production</h3>
+      <p class="skill-description">Creative skills in audio engineering and music production as a complementary expertise</p>
+     </div>
+     <div class="skill-card fade-in">
+      <div class="skill-icon">
+      
+      </div>
+      <h3 class="skill-title">Problem Solving</h3>
+      <p class="skill-description">Systematic approach to identifying challenges and developing innovative solutions</p>
+     </div>
+     <div class="skill-card fade-in">
+      <div class="skill-icon">
+      
+      </div>
+      <h3 class="skill-title">Analytical Thinking</h3>
+      <p class="skill-description">Strong analytical skills for data interpretation and research methodology</p>
+     </div>
+    </div>
+   </div>
+  </section><!-- Projects Section -->
+  <section id="projects" class="section projects">
+   <div class="container">
+    <div class="section-header fade-in">
+     <h2 class="section-title">Projects</h2>
+     <p class="section-subtitle">Showcasing my work and research contributions</p>
+    </div>
+    <div class="projects-grid">
+     <div class="project-card fade-in">
+      <div class="project-image">
+       🔬
+      </div>
+      <div class="project-content">
+       <h3 class="project-title">5S Implementation Research</h3>
+       <p class="project-description">Currently working on a research project applying 5S principles in the sewing section to improve efficiency and workplace organization.</p><a href="#" class="project-link">Learn More →</a>
+      </div>
+     </div>
+     <div class="project-card fade-in">
+      <div class="project-image">
+       🤖
+      </div>
+      <div class="project-content">
+       <h3 class="project-title">AI in Textile Engineering</h3>
+       <p class="project-description">Exploring applications of artificial intelligence in textile manufacturing and quality control processes.</p><a href="#" class="project-link">Learn More →</a>
+      </div>
+     </div>
+     <div class="project-card fade-in">
+      <div class="project-image">
+       📈
+      </div>
+      <div class="project-content">
+       <h3 class="project-title">Process Optimization Study</h3>
+       <p class="project-description">Research focused on optimizing production processes in apparel manufacturing through data analysis and lean methodologies.</p><a href="#" class="project-link">Learn More →</a>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Education Section -->
+  <section id="education" class="section">
+   <div class="container">
+    <div class="section-header fade-in">
+     <h2 class="section-title">Education</h2>
+     <p class="section-subtitle">Academic journey and qualifications</p>
+    </div>
+    <div class="education-timeline">
+     <div class="education-item fade-in">
+      <h3 class="education-degree">BSc in Textile Engineering</h3>
+      <p class="education-school">Department: Apparel Engineering</p>
+      <p class="education-department">Department of Apparel Engineering</p>
+      <p class="education-department">Affiliated to BUTEX (Bangladesh University of Textiles)</p>
+     </div>
+     <div class="education-item fade-in">
+      <h3 class="education-degree">HSC</h3>
+      <p class="education-school">Bangladesh Nou Bahini College, Chittagong</p>
+     </div>
+    </div>
+   </div>
+  </section><!-- Achievements Section -->
+  <section id="achievements" class="section achievements">
+   <div class="container">
+    <div class="section-header fade-in">
+     <h2 class="section-title">Achievements &amp; Certifications</h2>
+     <p class="section-subtitle">Recognition and accomplishments</p>
+    </div>
+    <div class="achievements-grid">
+     <div class="achievement-card fade-in">
+      <div class="achievement-icon">
+       
+      </div>
+      <h3 class="achievement-title">NASA Space App Challenge</h3>
+      <p class="achievement-description">Successfully participated in the NASA Space App Challenge, demonstrating innovation and problem-solving skills in a global competition.</p><a href="#" class="project-link">Learn More →</a>
+     
+      </div>
+     
+     <div class="achievement-card fade-in">
+      <div class="achievement-icon">
+       
+      </div>
+      <h3 class="achievement-title">Research Contributor</h3>
+      <p class="achievement-description">Actively contributing to research in textile engineering with focus on process improvement and quality management systems.</p><a href="#" class="project-link">Learn More →</a>
+     </div>
+    </div>
+   </div>
+  </section><!-- Contact Section -->
+  <section id="contact" class="section contact">
+   <div class="container">
+    <div class="section-header fade-in">
+     <h2 class="section-title">Get In Touch</h2>
+     <p class="section-subtitle">Let's connect and discuss opportunities</p>
+    </div>
+    <div class="contact-content">
+     <div class="contact-form fade-in">
+      <form id="contactForm">
+       <div class="form-group"><label for="name">Name</label>
+       <input type="text" id="name" name="name" required></div>
+
+       <div class="form-group"><label for="email">Email</label>
+       <input type="email" id="email" name="email" required></div>
+
+       <div class="form-group"><label for="subject">Subject</label>
+       <input type="text" id="subject" name="subject" required></div>
+
+       <div class="form-group"><label for="message">Message</label>
+       <textarea id="message" name="message" required></textarea></div>
+
+       <button type="submit" class="submit-button">Send Message</button>
+</form>
+
+<p id="formStatus" style="margin-top:10px;"></p>
+
+     </div>
+     <div class="contact-info fade-in">
+      <h3>Let's Connect</h3>
+      <p class="contact-details">I'm always interested in discussing new opportunities, research collaborations, or simply connecting with fellow professionals in the textile industry.</p>
+      <div class="contact-details">
+       <div class="contact-item"><i>📧</i> <span>md.sadmansafayet@gmail.com</span>
+       </div>
+       <div class="contact-item"><i> <img src="message.png" alt="profile-photo" style="width:25px;">  </i> <span>Mohammad Sadman Safayet Bhuiyan</span>
+       </div>
+       <div class="contact-item"><i>🎓</i> <span>Textile Engineering Student</span>
+       </div>
+       <div class="contact-item"><i><img src="gtec.jpeg" alt="" style="width: 25px;"></i> <span>Gopalgonj Textile Engineering College (BUTEX affiliated)</span>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Footer -->
+  <footer class="footer">
+   <div class="container">
+    
+   </div>
+  </footer>
+  <script>
+const scriptURL = "https://script.google.com/macros/s/AKfycbxDJeVN3ZgVGZf2zbzu7zjU-IPJEfHdtpdJeD34ds0Czcb8HvyiAb06DTpiPtwSI49t/exec";
+
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const formData = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        subject: document.getElementById("subject").value,
+        message: document.getElementById("message").value
+    };
+
+    fetch(scriptURL, {
+        method: "POST",
+        body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(result => {
+        document.getElementById("formStatus").innerText = "✔ Message sent successfully!";
+        document.getElementById("contactForm").reset();
+    })
+    .catch(error => {
+        document.getElementById("formStatus").innerText = "❌ Error sending message!";
+        console.error('Error!', error.message);
+    });
+});
+</script>
+
+  <script>
+  
+        // Configuration object for editable content
+        const defaultConfig = {
+            full_name: "Mohammad Sadman Safayet Bhuiyan",
+            subtitle: "Student and Aspiring Apparel Engineer",
+            cta_text: "Get In Touch",
+            about_bio: "I am pursuing my BSc in Textile Engineering. I am interested in AI and research, currently working on a 5S application research project in sewing. Passionate about problem-solving and innovation.",
+            email: "md.sadmansafayet@gmail.com",
+            degree: "BSc in Textile Engineering",
+            department: "Apparel Engineering",
+            college: "Gopalgonj Textile Engineering College, affiliated to BUTEX"
+        };
+
+        // Mobile Menu Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileToggle.textContent = '☰';
+            });
+        });
+
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in, .skill-card, .project-card, .education-item, .achievement-card, .contact-form, .contact-info, .about-text').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Staggered Animation for Skills
+        const skillCards = document.querySelectorAll('.skill-card');
+        skillCards.forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.1}s`;
+        });
+
+        // Staggered Animation for Projects
+        const projectCards = document.querySelectorAll('.project-card');
+        projectCards.forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.15}s`;
+        });
+
+        // Staggered Animation for Achievements
+        const achievementCards = document.querySelectorAll('.achievement-card');
+        achievementCards.forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.2}s`;
+        });
+
+        // Show success message
+        function showSuccessMessage(message) {
+            const successDiv = document.createElement('div');
+            successDiv.className = 'success-message';
+            successDiv.textContent = message;
+            
+            document.body.appendChild(successDiv);
+            
+            setTimeout(() => successDiv.classList.add('show'), 100);
+            
+            setTimeout(() => {
+                successDiv.classList.remove('show');
+                setTimeout(() => {
+                    if (document.body.contains(successDiv)) {
+                        document.body.removeChild(successDiv);
+                    }
+                }, 300);
+            }, 4000);
+        }
+
+        // Contact Form Handling
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simple form validation and success message
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const subject = formData.get('subject');
+            const message = formData.get('message');
+            
+            if (name && email && subject && message) {
+                // Show success message
+                showSuccessMessage('Thank you for your message! I\'ll get back to you soon.');
+                
+                // Reset form
+                this.reset();
+            }
+        });
+
+        // Navbar Scroll Effect
+        let lastScrollTop = 0;
+        const navbar = document.querySelector('.navbar');
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                navbar.style.transform = 'translateY(-100%)';
+            } else {
+                navbar.style.transform = 'translateY(0)';
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+
+        // Parallax Effect for Hero Section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            const heroContent = document.querySelector('.hero-content');
+            
+            if (hero && heroContent && scrolled < window.innerHeight) {
+                heroContent.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+
+        // Typing Effect for Hero Title
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const heroTitle = document.querySelector('.hero-title');
+                if (heroTitle) {
+                    const originalText = heroTitle.textContent;
+                    heroTitle.textContent = '';
+                    
+                    let i = 0;
+                    function type() {
+                        if (i < originalText.length) {
+                            heroTitle.textContent += originalText.charAt(i);
+                            i++;
+                            setTimeout(type, 80);
+                        }
+                    }
+                    type();
+                }
+            }, 1000);
+        });
+
+        // Initialize Elements SDK
+        async function onConfigChange(config) {
+            // Update hero section
+            const heroTitle = document.querySelector('.hero-title');
+            const heroSubtitle = document.querySelector('.hero-subtitle');
+            const ctaButton = document.querySelector('.cta-button');
+            
+            if (heroTitle) heroTitle.textContent = config.full_name || defaultConfig.full_name;
+            if (heroSubtitle) heroSubtitle.textContent = config.subtitle || defaultConfig.subtitle;
+            if (ctaButton) ctaButton.textContent = config.cta_text || defaultConfig.cta_text;
+            
+            // Update about section
+            const aboutDescription = document.querySelector('.about-description');
+            if (aboutDescription) aboutDescription.textContent = config.about_bio || defaultConfig.about_bio;
+            
+            // Update contact information
+            const emailElements = document.querySelectorAll('.contact-item span');
+            emailElements.forEach(element => {
+                if (element.textContent.includes('@')) {
+                    element.textContent = config.email || defaultConfig.email;
+                }
+            });
+            
+            // Update education section
+            const educationDegree = document.querySelector('.education-degree');
+            const educationSchool = document.querySelector('.education-school');
+            const educationDepartment = document.querySelector('.education-department');
+            
+            if (educationDegree) educationDegree.textContent = config.degree || defaultConfig.degree;
+            if (educationSchool) educationSchool.textContent = config.college || defaultConfig.college;
+            if (educationDepartment) educationDepartment.textContent = `Department: ${config.department || defaultConfig.department}`;
+            
+            // Update logo
+            const logo = document.querySelector('.logo');
+            if (logo) {
+                const firstName = (config.full_name || defaultConfig.full_name).split(' ')[0];
+                const lastName = (config.full_name || defaultConfig.full_name).split(' ')[1];
+                logo.textContent = `${firstName} ${lastName}`;
+            }
+        }
+
+        // Initialize Elements SDK
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig: defaultConfig,
+                onConfigChange: onConfigChange,
+                mapToCapabilities: (config) => ({
+                    recolorables: [],
+                    borderables: [],
+                    fontEditable: undefined,
+                    fontSizeable: undefined
+                }),
+                mapToEditPanelValues: (config) => new Map([
+                    ["full_name", config.full_name || defaultConfig.full_name],
+                    ["subtitle", config.subtitle || defaultConfig.subtitle],
+                    ["cta_text", config.cta_text || defaultConfig.cta_text],
+                    ["about_bio", config.about_bio || defaultConfig.about_bio],
+                    ["email", config.email || defaultConfig.email],
+                    ["degree", config.degree || defaultConfig.degree],
+                    ["department", config.department || defaultConfig.department],
+                    ["college", config.college || defaultConfig.college]
+                ])
+            });
+        }
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99e4ff6e93a6b255',t:'MTc2MzEwNzQ2My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
